@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Router } from '@reach/router';
+import WordAdder from './Components/WordAdder';
+import WordPicker from './Components/WordPicker';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = { words: [] };
+
+  setWords = (words) => {
+    this.setState({ words });
+  };
+
+  render() {
+    return (
+      <section className="App">
+        <h1>Charades words</h1>
+        <Router>
+          <WordAdder path="/" setWord={this.setWords} />
+          <WordPicker path="play" words={this.state.words} />
+        </Router>
+      </section>
+    );
+  }
 }
 
 export default App;
