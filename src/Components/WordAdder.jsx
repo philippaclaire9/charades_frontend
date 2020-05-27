@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import WordTracker from './WordTracker';
-import WordPicker from './WordPicker';
 
 class WordAdder extends Component {
   state = { count: 0, typedWord: '', words: [], error: false };
